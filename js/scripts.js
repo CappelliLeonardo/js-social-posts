@@ -96,3 +96,43 @@ for (let i = 0; i < posts.length; i++){
     </div>
 `
 }
+
+let allLikeButton = document.querySelectorAll('.like-button');
+let allContainerLikers = document.querySelectorAll('b');
+console.log("allContainerLikers", allContainerLikers);
+
+
+
+
+for (let j = 0; j < allLikeButton.length; j++){
+
+    allLikeButton[j].addEventListener("click", function(){
+        if(!(allLikeButton[j].classList.contains('like-button--liked'))){
+            
+            allLikeButton[j].classList.add("like-button--liked");
+
+            console.log("incremento counter");
+
+
+            console.log("numero like prima", posts[j].likes);
+            
+            posts[j].likes++;
+            console.log("numero like dopo", posts[j].likes);
+            allContainerLikers[j].innerHTML = posts[j].likes;
+        }
+        else if((allLikeButton[j].classList.contains('like-button--liked'))){
+
+            allLikeButton[j].classList.remove("like-button--liked");
+
+            console.log("decremento counter");
+
+
+            console.log("numero like prima", posts[j].likes);
+
+            posts[j].likes--;
+            console.log("numero like dopo", posts[j].likes);
+            allContainerLikers[j].innerHTML = posts[j].likes;
+        }
+
+    })
+}
